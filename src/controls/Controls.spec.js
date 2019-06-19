@@ -8,11 +8,11 @@ describe('Controls', () => {
   it('should disable the lock gate button if gate is open', () => {
     const mockFn = jest.fn();
     const { getByText } = render(
-      <Controls locked={true} closed={false} toggleLocked={mockFn} />
+      <Controls locked={false} closed={false} toggleLocked={mockFn} />
     );
-    const lockButton = getByText(/Unlock Gate/);
+    const LockButton = getByText(/Lock Gate/);
     // expect(lockButton.hasAttribute('disabled')).toBeTruthy();
-    fireEvent.click(lockButton);
+    fireEvent.click(LockButton);
     expect(mockFn).not.toBeCalled();
   });
 
@@ -28,13 +28,8 @@ describe('Controls', () => {
   });
 
   it.skip('should toggle close and open gate when clicked', () => {
-    const mockFn = jest.fn();
-    // const { getByText } = render(<Controls locked={false} closed={true} />);
-
-    const { getByText } = render(
-      <Controls closed={false} toggleClosed={mockFn} />
-    );
-    const closeGateButton = getByText(/Close Gate/);
+    const { getByText } = render(<Controls closed={false} locked={false} />);
+    const closeButton = getByText(/Close Gate/);
     fireEvent.click(closeButton);
     getByText(/Open Gate/);
   });
