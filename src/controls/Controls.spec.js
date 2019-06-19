@@ -35,7 +35,7 @@ describe('Controls', () => {
       <Controls closed={false} toggleClosed={mockFn} />
     );
     const closeGateButton = getByText(/Close Gate/);
-    fireEvent.click(closeButt);
+    fireEvent.click(closeButton);
     getByText(/Open Gate/);
   });
 });
